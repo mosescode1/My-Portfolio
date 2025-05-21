@@ -75,7 +75,7 @@ const Hero = () => {
 							</div>
 						</h1>
 						<p className='text-muted-foreground max-w-lg text-lg mb-8 leading-relaxed mt-12 text-xl'>
-							Backend developer with 2+ years of experience building scalable,
+							Backend developer with 3+ years of experience building scalable,
 							cloud-native systems focused on distributed architectures, secure
 							file management, and fine-grained access control. Proficient in
 							Node.js, PostgreSQL, and cloud platforms — with emphasis on
@@ -91,7 +91,7 @@ const Hero = () => {
 							<Button
 								variant='outline'
 								asChild
-								className='bg-background/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1'>
+								className='bg-gray-900/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1'>
 								<a href='#projects'>View My Work</a>
 							</Button>
 						</div>
@@ -115,32 +115,32 @@ const Hero = () => {
 								</div>
 							</div>
 							<div className='text-sm overflow-x-auto'>
-								<span className='text-code-green'>const</span>{' '}
-								<span className='text-code-blue'>developer</span> = {'{'}
+								<span className='text-green-500'>const</span>{' '}
+								<span className='text-blue-600'>developer</span> = {'{'}
 								<br />
-								&nbsp;&nbsp;<span className='text-code-purple'>expertise:</span>{' '}
-								"<span className='text-code-yellow'>
+								&nbsp;&nbsp;<span className='text-purple-500'>expertise:</span>{' '}
+								"<span className='text-yellow-600'>
 									{specialties[specialtyIndex]}
 								</span>
 								",<br />
-								&nbsp;&nbsp;<span className='text-code-purple'>tech:</span> [
+								&nbsp;&nbsp;<span className='text-purple-500'>tech:</span> [
 								{languageSets[languageIndex].map((lang, index) => (
 									<span key={lang}>
-										<span className='text-code-yellow'>"{lang}"</span>
+										<span className='text-yellow-600'>"{lang}"</span>
 										{index < languageSets[languageIndex].length - 1 && ', '}
 									</span>
 								))}
 								],<br />
-								&nbsp;&nbsp;<span className='text-code-purple'>location:</span>{' '}
-								"<span className='text-code-yellow'>Nigeria, Lagos</span>",<br />
-								&nbsp;&nbsp;<span className='text-code-purple'>available:</span>{' '}
-								<span className='text-code-green'>true</span>
+								&nbsp;&nbsp;<span className='text-purple-500'>location:</span>{' '}
+								"<span className='text-yellow-600'>Nigeria, Lagos</span>",<br />
+								&nbsp;&nbsp;<span className='text-purple-500'>available:</span>{' '}
+								<span className='text-green-600'>true</span>
 								<br />
 								{'};'}
 							</div>
 
 							<div className='absolute -top-3 -right-3'>
-								<Code className='text-primary h-6 w-6' />
+								<Code className='text-blue-900 h-6 w-6' />
 							</div>
 						</div>
 
