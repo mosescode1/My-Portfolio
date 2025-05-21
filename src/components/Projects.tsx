@@ -17,7 +17,7 @@ const projects: Project[] = [
 		technologies: ['Go', 'Redis', 'Docker', 'Prometheus', 'Grafana'],
 		githubUrl: 'https://github.com',
 		demoUrl: 'https://example.com',
-		image: '../../public/project.png',
+		image: '/project.png',
 	},
 	{
 		title: 'Distributed Task Queue',
@@ -25,7 +25,7 @@ const projects: Project[] = [
 			'A fault-tolerant distributed task queue system that ensures reliable execution of background jobs across multiple worker nodes with at-least-once delivery semantics.',
 		technologies: ['Nodejs', 'Docker', 'RabbitMQ', 'PostgreSQL'],
 		githubUrl: 'https://github.com',
-		image: '../../public/project.png',
+		image: '/project.png',
 	},
 	{
 		title: 'Real-time Analytics Engine',
@@ -34,7 +34,7 @@ const projects: Project[] = [
 		technologies: ['Python', 'Kafka', 'Elasticsearch', 'FastAPI'],
 		githubUrl: 'https://github.com',
 		demoUrl: 'https://example.com',
-		image: '../../public/project.png',
+		image: '/project.png',
 	},
 	{
 		title: 'Microservices Framework',
@@ -42,7 +42,7 @@ const projects: Project[] = [
 			'A lightweight framework for building microservices with built-in service discovery, configuration management, and circuit breaking capabilities.',
 		technologies: ['Go', 'Kubernetes', 'gRPC', 'Kafka', 'Aws'],
 		githubUrl: 'https://github.com',
-		image: '../../public/project.png',
+		image: '/project.png',
 	},
 ];
 

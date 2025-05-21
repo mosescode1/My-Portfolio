@@ -49,7 +49,7 @@ const About = () => {
 						<div className="relative w-full max-w-xs group">
 							<div className="relative z-10 border-2 border-primary rounded-md overflow-hidden shadow-lg">
 								<img
-									src="../../public/image.jpeg"
+									src="/image.jpeg"
 									alt="Profile"
 									className="w-full grayscale group-hover:grayscale-0 transition duration-300 group-hover:scale-105 object-cover"
 								/>
