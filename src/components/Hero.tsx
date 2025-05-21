@@ -101,7 +101,7 @@ const Hero = () => {
 						<div
 							className={cn(
 								'font-mono p-5 rounded-lg border',
-								'bg-gradient-to-br from-secondary/90 to-background',
+								'bg-gradient-to-br bg-gray-900/90 to-background',
 								'shadow-lg relative transform transition-all duration-300',
 								'backdrop-blur-sm md:ml-5',
 								languageFade ? 'opacity-100 scale-100' : 'opacity-90 scale-[0.98]'
@@ -144,8 +144,8 @@ const Hero = () => {
 							</div>
 						</div>
 
-						<div className='absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl'></div>
-						<div className='absolute -top-4 -left-4 w-20 h-20 bg-primary/5 rounded-full blur-xl'></div>
+						<div className='absolute -bottom-4 -right-4 w-24 h-24 bg-blue-800/25 rounded-full blur-2xl'></div>
+						<div className='absolute -top-4 -left-4 w-20 h-20 bg-blue-800/20 rounded-full blur-xl'></div>
 					</div>
 				</div>
 			</div>
