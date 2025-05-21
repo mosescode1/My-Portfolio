@@ -70,7 +70,7 @@ const Navbar = () => {
 					className={cn(
 						'fixed md:static top-16 right-0 left-0 bg-background md:bg-transparent border-b border-border md:border-0',
 						'md:flex transition-all duration-300 ease-in-out',
-						mobileMenuOpen ? 'flex flex-col' : 'hidden'
+						mobileMenuOpen ? 'flex flex-col bg-gray-800' : 'hidden'
 					)}>
 					<ul className='flex flex-col md:flex-row items-center gap-1 md:gap-2 w-full md:w-auto'>
 						{['about', 'skills', 'projects', 'contact'].map((item, idx) => (
