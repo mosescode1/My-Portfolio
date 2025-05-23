@@ -5,7 +5,7 @@ const Footer = () => {
 				<div className='flex flex-col items-center justify-center'>
 					<div className='mb-4 flex items-center gap-4'>
 						<a
-							href='https://github.com'
+							href='https://github.com/mosescode1'
 							target='_blank'
 							rel='noopener noreferrer'
 							className='text-muted-foreground hover:text-primary transition-colors'>
@@ -48,7 +48,7 @@ const Footer = () => {
 						</a>
 
 						<a
-							href='mailto:hello@example.com'
+							href='mailto:emosescode@gmail.com'
 							className='text-muted-foreground hover:text-primary transition-colors'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -68,7 +68,8 @@ const Footer = () => {
 					</div>
 
 					<p className='text-muted-foreground text-sm text-center'>
-						Designed & Built by <span className='text-primary'>Eteng Moses Efa</span>
+						Designed & Built by{' '}
+						<span className='text-primary'>Eteng Moses Efa</span>
 					</p>
 
 					<p className='text-muted-foreground text-xs mt-2'>

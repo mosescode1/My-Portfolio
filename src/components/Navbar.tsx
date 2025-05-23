@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { Terminal } from 'lucide-react';
 
 const Navbar = () => {
 	const [scrolled, setScrolled] = useState(false);
@@ -23,11 +24,14 @@ const Navbar = () => {
 					: 'bg-transparent'
 			)}>
 			<div className='container mx-auto px-4 md:px-6 flex justify-between items-center h-16'>
-				<a
-					href='#'
-					className='font-mono text-primary font-bold text-xl text-[#0a85ff] dark:text-blue-400'>
-					dev.<span className='text-white'>YareYare</span>
-				</a>
+				<div className='flex items-center gap-2'>
+					<Terminal className='h-7 w-7' />
+					<a
+						href='#'
+						className='font-mono text-primary font-bold text-xl text-[#0a85ff] dark:text-blue-400'>
+						dev.<span className='text-white'>YareYare</span>
+					</a>
+				</div>
 
 				<button
 					className='md:hidden text-foreground'
@@ -80,7 +84,7 @@ const Navbar = () => {
 									onClick={() => setMobileMenuOpen(false)}
 									className='text-muted-foreground hover:text-foreground block py-3 px-4 md:py-2 md:px-3 transition duration-150 ease-in-out text-center md:text-left font-medium text-sm'>
 									<span className='text-primary text-blue-700 font-bold font-mono mr-1'>
-										{`${idx + 1}`.padStart(2, "0")}.
+										{`${idx + 1}`.padStart(2, '0')}.
 									</span>{' '}
 									{item.charAt(0).toUpperCase() + item.slice(1)}
 								</a>
@@ -88,7 +92,7 @@ const Navbar = () => {
 						))}
 						<li className='w-full md:w-auto px-4 py-3 md:p-0'>
 							<a
-								href='/resume.pdf'
+								href='https://drive.google.com/file/d/1cOfs9nxAKhM3ysEwXus876X7Hux8Jg0e/view?usp=drive_link'
 								target='_blank'
 								rel='noopener noreferrer'
 								className='inline-block text-sm text-primary border border-blue-700 rounded px-4 py-2  hover:bg-primary/10 w-full md:w-auto text-center'>

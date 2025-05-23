@@ -146,7 +146,7 @@ const Contact = () => {
 
 					<div className='flex justify-center gap-6'>
 						<a
-							href='mailto:hello@example.com'
+							href='mailto:emosescode@gmail.com'
 							className='text-muted-foreground hover:text-primary transition-colors'>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -165,7 +165,7 @@ const Contact = () => {
 						</a>
 
 						<a
-							href='https://github.com'
+							href='https://github.com/mosescode1'
 							target='_blank'
 							rel='noopener noreferrer'
 							className='text-muted-foreground hover:text-primary transition-colors'>
@@ -186,7 +186,7 @@ const Contact = () => {
 						</a>
 
 						<a
-							href='https://linkedin.com'
+							href='https://www.linkedin.com/in/eteng-moses-001954176'
 							target='_blank'
 							rel='noopener noreferrer'
 							className='text-muted-foreground hover:text-primary transition-colors'>

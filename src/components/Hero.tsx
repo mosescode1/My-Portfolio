@@ -54,7 +54,7 @@ const Hero = () => {
 					<div className='md:col-span-3'>
 						<p className='font-mono text-primary mb-5'>
 							<span className='inline-flex items-center gap-2 text-[#0a85ff] text-2xl'>
-								<Terminal className='h-4 w-4' /> Hello, I'm
+								<Terminal className='h-5 w-5' /> Hello, I'm
 							</span>
 						</p>
 						<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold mb-4'>
@@ -74,7 +74,7 @@ const Hero = () => {
 								</span>
 							</div>
 						</h1>
-						<p className='text-muted-foreground max-w-lg text-lg mb-8 leading-relaxed mt-12 text-xl'>
+						<p className='text-muted-foreground max-w-lg  mb-8 leading-relaxed mt-12 text-xl'>
 							Backend developer with 3+ years of experience building scalable,
 							cloud-native systems focused on distributed architectures, secure
 							file management, and fine-grained access control. Proficient in
@@ -104,7 +104,9 @@ const Hero = () => {
 								'bg-gradient-to-br bg-gray-900/90 to-background',
 								'shadow-lg relative transform transition-all duration-300',
 								'backdrop-blur-sm md:ml-5',
-								languageFade ? 'opacity-100 scale-100' : 'opacity-90 scale-[0.98]'
+								languageFade
+									? 'opacity-100 scale-100'
+									: 'opacity-90 scale-[0.98]'
 							)}>
 							<div className='flex items-center gap-2 mb-3 text-sm'>
 								<div className='bg-red-500 w-3 h-3 rounded-full'></div>
@@ -118,11 +120,15 @@ const Hero = () => {
 								<span className='text-green-500'>const</span>{' '}
 								<span className='text-blue-600'>developer</span> = {'{'}
 								<br />
-								&nbsp;&nbsp;<span className='text-purple-500'>expertise:</span>{' '}
-								"<span className='text-yellow-600'>
+								&nbsp;&nbsp;<span className='text-purple-500'>
+									expertise:
+								</span>{' '}
+								"
+								<span className='text-yellow-600'>
 									{specialties[specialtyIndex]}
 								</span>
-								",<br />
+								",
+								<br />
 								&nbsp;&nbsp;<span className='text-purple-500'>tech:</span> [
 								{languageSets[languageIndex].map((lang, index) => (
 									<span key={lang}>
@@ -130,10 +136,14 @@ const Hero = () => {
 										{index < languageSets[languageIndex].length - 1 && ', '}
 									</span>
 								))}
-								],<br />
-								&nbsp;&nbsp;<span className='text-purple-500'>location:</span>{' '}
-								"<span className='text-yellow-600'>Nigeria, Lagos</span>",<br />
-								&nbsp;&nbsp;<span className='text-purple-500'>available:</span>{' '}
+								],
+								<br />
+								&nbsp;&nbsp;<span className='text-purple-500'>location:</span> "
+								<span className='text-yellow-600'>Nigeria, Lagos</span>",
+								<br />
+								&nbsp;&nbsp;<span className='text-purple-500'>
+									available:
+								</span>{' '}
 								<span className='text-green-600'>true</span>
 								<br />
 								{'};'}

@@ -4,28 +4,28 @@ interface Project {
 	title: string;
 	description: string;
 	technologies: string[];
-	githubUrl: string;
+	githubUrl?: string;
 	demoUrl?: string;
 	image: string;
 }
 
 const projects: Project[] = [
 	{
-		title: 'Scalable API Gateway',
+		title: 'A minimal Airbnb database Design',
 		description:
-			'A high-performance API Gateway built with Go that handles 10K+ requests per second with sub-millisecond latency. Features include rate limiting, circuit breaking, and dynamic routing.',
-		technologies: ['Go', 'Redis', 'Docker', 'Prometheus', 'Grafana'],
-		githubUrl: 'https://github.com',
-		demoUrl: 'https://example.com',
-		image: '/project.png',
+			'a minimal database design for an Airbnb-like platform, along with a description of each component. This design covers the essential entities and relationships needed to support core features such as user registration, property listings, bookings, and reviews.',
+		technologies: ['drawsql', 'postgresql', 'RDBMS'],
+		// githubUrl: '#',
+		demoUrl: 'https://drawsql.app/teams/alx-connect/diagrams/airbnb',
+		image: '/database.png',
 	},
 	{
-		title: 'Distributed Task Queue',
+		title: 'File Management System',
 		description:
-			'A fault-tolerant distributed task queue system that ensures reliable execution of background jobs across multiple worker nodes with at-least-once delivery semantics.',
+			'A File Management System (FMS) is a software application designed to store, organize, secure, and manage digital files and folders in a structured and user-controlled environment. It allows users to upload, download, preview, share, and manage files with access controls based on roles, groups, or custom permissions.This system mimics the behavior of traditional file systems (like Windows Explorer or macOS Finder) but is web-based and includes modern features like cloud storage integration, role-based access control (RBAC), audit logging, and file sharing',
 		technologies: ['Nodejs', 'Docker', 'RabbitMQ', 'PostgreSQL'],
-		githubUrl: 'https://github.com',
-		image: '/project.png',
+		demoUrl: 'doc.yareyare.software',
+		image: '/api.png',
 	},
 	{
 		title: 'Real-time Analytics Engine',
@@ -72,26 +72,28 @@ const ProjectCard = ({ project }: { project: Project }) => {
 				</div>
 
 				<div className='flex gap-4 mt-4'>
-					<a
-						href={project.githubUrl}
-						target='_blank'
-						rel='noopener noreferrer'
-						className='text-foreground hover:text-primary transition-colors'>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							width='20'
-							height='20'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='2'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							className='lucide lucide-github'>
-							<path d='M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4' />
-							<path d='M9 18c-4.51 2-5-2-7-2' />
-						</svg>
-					</a>
+					{project.githubUrl && (
+						<a
+							href={project.githubUrl}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-foreground hover:text-primary transition-colors'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='20'
+								height='20'
+								viewBox='0 0 24 24'
+								fill='none'
+								stroke='currentColor'
+								strokeWidth='2'
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								className='lucide lucide-github'>
+								<path d='M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4' />
+								<path d='M9 18c-4.51 2-5-2-7-2' />
+							</svg>
+						</a>
+					)}
 
 					{project.demoUrl && (
 						<a
@@ -143,7 +145,7 @@ const Projects = () => {
 						on GitHub.
 					</p>
 					<a
-						href='https://github.com'
+						href='https://github.com/mosescode1'
 						target='_blank'
 						rel='noopener noreferrer'
 						className='inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors'>
