@@ -24,7 +24,7 @@ const Skills = () => {
 	const skillCategories = [
 		{
 			title: 'Programming Languages',
-			skills: ['Go', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
+			skills: ['Go', 'JavaScript', 'TypeScript', 'SQL'],
 		},
 		{
 			title: 'Frameworks & Libraries',
@@ -32,7 +32,7 @@ const Skills = () => {
 				'Express',
 				'Fiber',
 				'Echo',
-				'FastAPI',
+				'Nestjs',
 				'Express.js',
 				'Hibernate',
 				'JUnit',
@@ -42,7 +42,7 @@ const Skills = () => {
 		{
 			title: 'Databases',
 			skills: [
-				'PostgreSQL',
+				'PostgresSQL',
 				'MySQL',
 				'MongoDB',
 				'Redis',
@@ -56,7 +56,7 @@ const Skills = () => {
 				'Docker',
 				'Kubernetes',
 				'AWS',
-				'GCP',
+				'Linode',
 				'Azure',
 				'Terraform',
 				'CI/CD',

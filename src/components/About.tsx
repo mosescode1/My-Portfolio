@@ -30,11 +30,11 @@ const About = () => {
 								{[
 									'Go',
 									'Node.js',
-									'PostgreSQL / MySQL',
+									'PostgresSQL / MySQL',
 									'Redis',
 									'GraphQL',
 									'Docker / Kubernetes',
-									'AWS / GCP',
+									'AWS / Azure',
 								].map((tech) => (
 									<li key={tech} className="flex items-center">
 										<span className="text-[#0A85FF] mr-2 text-2xl">▹</span> {tech}
@@ -51,7 +51,7 @@ const About = () => {
 								<img
 									src="/image.jpeg"
 									alt="Profile"
-									className="w-full grayscale group-hover:grayscale-0 transition duration-300 group-hover:scale-105 object-cover"
+									className="w-full  transition duration-300 group-hover:scale-105 object-cover"
 								/>
 							</div>
 							<div className="absolute inset-0 border-2 border-primary rounded-md translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition duration-300" />
