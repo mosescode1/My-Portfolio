@@ -92,7 +92,7 @@ const Navbar = () => {
 						))}
 						<li className='w-full md:w-auto px-4 py-3 md:p-0'>
 							<a
-								href='https://drive.google.com/file/d/1cOfs9nxAKhM3ysEwXus876X7Hux8Jg0e/view?usp=drive_link'
+								href='https://drive.google.com/file/d/13YJdyKivXTL8nTIS9HVX1_x6bvemdYZm/view?usp=sharing'
 								target='_blank'
 								rel='noopener noreferrer'
 								className='inline-block text-sm text-primary border border-blue-700 rounded px-4 py-2  hover:bg-primary/10 w-full md:w-auto text-center'>

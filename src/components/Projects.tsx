@@ -24,24 +24,14 @@ const projects: Project[] = [
 		description:
 			'A File Management System (FMS) is a software application designed to store, organize, secure, and manage digital files and folders in a structured and user-controlled environment. It allows users to upload, download, preview, share, and manage files with access controls based on roles, groups, or custom permissions.This system mimics the behavior of traditional file systems (like Windows Explorer or macOS Finder) but is web-based and includes modern features like cloud storage integration, role-based access control (RBAC), audit logging, and file sharing',
 		technologies: ['Nodejs', 'Docker', 'RabbitMQ', 'PostgreSQL'],
-		demoUrl: 'doc.yareyare.software',
+		demoUrl: 'https://documenter.getpostman.com/view/36203711/2sB2qZDh35',
 		image: '/api.png',
 	},
 	{
-		title: 'Real-time Analytics Engine',
+		title: 'Go Microservices Application',
 		description:
-			'A streaming analytics platform that processes and analyzes event data in real-time. Handles over 50M events daily with custom aggregation pipelines.',
-		technologies: ['Python', 'Kafka', 'Elasticsearch', 'FastAPI'],
-		githubUrl: 'https://github.com',
-		demoUrl: 'https://example.com',
-		image: '/project.png',
-	},
-	{
-		title: 'Microservices Framework',
-		description:
-			'A lightweight framework for building microservices with built-in service discovery, configuration management, and circuit breaking capabilities.',
+			'A golang Microservice application, that uses grpc as it server to server connection and Kafka or data stream and events handling',
 		technologies: ['Go', 'Kubernetes', 'gRPC', 'Kafka', 'Aws'],
-		githubUrl: 'https://github.com',
 		image: '/project.png',
 	},
 ];
