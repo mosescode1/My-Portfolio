@@ -1,109 +1,87 @@
-import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { Terminal } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { Menu, Terminal, X } from "lucide-react";
 
 const Navbar = () => {
-	const [scrolled, setScrolled] = useState(false);
-	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			setScrolled(window.scrollY > 20);
-		};
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-	return (
-		<header
-			className={cn(
-				'fixed top-0 w-full z-50 transition-all duration-200',
-				scrolled
-					? 'bg-background/90 backdrop-blur-lg border-b border-border'
-					: 'bg-transparent'
-			)}>
-			<div className='container mx-auto px-4 md:px-6 flex justify-between items-center h-16'>
-				<div className='flex items-center gap-2'>
-					<Terminal className='h-7 w-7' />
-					<a
-						href='#'
-						className='font-mono text-primary font-bold text-xl text-[#0a85ff] dark:text-blue-400'>
-						dev.<span className='text-white'>YareYare</span>
-					</a>
-				</div>
+  return (
+    <header className="fixed left-0 top-0 z-50 w-full px-4 py-4 transition-all duration-300">
+      <div
+        className={cn(
+          "container mx-auto flex h-16 items-center justify-between rounded-full border px-4 md:px-6 transition-all duration-300",
+          scrolled
+            ? "glass-panel border-white/15 bg-slate-950/60 shadow-2xl shadow-black/20"
+            : "border-white/10 bg-white/[0.035] backdrop-blur-md",
+        )}
+      >
+        <a href="#" className="group flex items-center gap-3">
+          <span className="grid h-10 w-10 place-items-center rounded-full border border-slate-300/20 bg-white/5 text-slate-200 shadow-lg shadow-black/10 transition group-hover:scale-105">
+            <Terminal className="h-5 w-5" />
+          </span>
+          <span className="font-mono text-lg font-bold tracking-tight text-white">
+            dev.<span className="text-gradient">YareYare</span>
+          </span>
+        </a>
 
-				<button
-					className='md:hidden text-foreground'
-					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-					{mobileMenuOpen ? (
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							width='24'
-							height='24'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='2'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							className='lucide lucide-x'>
-							<path d='M18 6 6 18' />
-							<path d='m6 6 12 12' />
-						</svg>
-					) : (
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							width='24'
-							height='24'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='2'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							className='lucide lucide-menu'>
-							<line x1='4' x2='20' y1='12' y2='12' />
-							<line x1='4' x2='20' y1='6' y2='6' />
-							<line x1='4' x2='20' y1='18' y2='18' />
-						</svg>
-					)}
-				</button>
+        <button
+          className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+          aria-label="Toggle navigation menu"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
+        </button>
 
-				<nav
-					className={cn(
-						'fixed md:static top-16 right-0 left-0 bg-background md:bg-transparent border-b border-border md:border-0',
-						'md:flex transition-all duration-300 ease-in-out',
-						mobileMenuOpen ? 'flex flex-col bg-gray-800' : 'hidden'
-					)}>
-					<ul className='flex flex-col md:flex-row items-center gap-1 md:gap-2 w-full md:w-auto'>
-						{['about', 'skills', 'projects', 'contact'].map((item, idx) => (
-							<li key={item} className='w-full md:w-auto'>
-								<a
-									href={`#${item}`}
-									onClick={() => setMobileMenuOpen(false)}
-									className='text-muted-foreground hover:text-foreground block py-3 px-4 md:py-2 md:px-3 transition duration-150 ease-in-out text-center md:text-left font-medium text-sm'>
-									<span className='text-primary text-blue-700 font-bold font-mono mr-1'>
-										{`${idx + 1}`.padStart(2, '0')}.
-									</span>{' '}
-									{item.charAt(0).toUpperCase() + item.slice(1)}
-								</a>
-							</li>
-						))}
-						<li className='w-full md:w-auto px-4 py-3 md:p-0'>
-							<a
-								href='https://drive.google.com/file/d/13YJdyKivXTL8nTIS9HVX1_x6bvemdYZm/view?usp=sharing'
-								target='_blank'
-								rel='noopener noreferrer'
-								className='inline-block text-sm text-primary border border-blue-700 rounded px-4 py-2  hover:bg-primary/10 w-full md:w-auto text-center'>
-								Resume
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-	);
+        <nav
+          className={cn(
+            "absolute left-4 right-4 top-24 rounded-3xl border border-white/10 bg-slate-950/90 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:static md:block md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0",
+            mobileMenuOpen ? "block" : "hidden",
+          )}
+        >
+          <ul className="flex flex-col items-center gap-2 md:flex-row">
+            {["about", "skills", "projects", "contact"].map((item, idx) => (
+              <li key={item} className="w-full md:w-auto">
+                <a
+                  href={`#${item}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="group block rounded-full px-4 py-3 text-center text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white md:py-2"
+                >
+                  <span className="mr-1 font-mono text-[#c4a76d]">
+                    {`${idx + 1}`.padStart(2, "0")}.
+                  </span>
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </a>
+              </li>
+            ))}
+            <li className="w-full md:w-auto">
+              <a
+                href="https://drive.google.com/file/d/13YJdyKivXTL8nTIS9HVX1_x6bvemdYZm/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-full border border-[#c4a76d]/35 bg-[#c4a76d]/10 px-5 py-3 text-center text-sm font-semibold text-[#eadfc8] transition hover:-translate-y-0.5 hover:bg-[#c4a76d]/15 md:py-2"
+              >
+                Resume
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
 };
 
 export default Navbar;
