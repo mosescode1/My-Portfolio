@@ -1,146 +1,119 @@
-interface SkillCategoryProps {
-  title: string;
-  skills: string[];
-}
+const skillCategories = [
+  {
+    title: "Languages & runtimes",
+    skills: ["Go", "TypeScript", "JavaScript", "SQL", "Node.js"],
+  },
+  {
+    title: "Backend frameworks",
+    skills: [
+      "Express",
+      "NestJS",
+      "Fiber",
+      "Echo",
+      "Go Kit",
+      "Hibernate",
+      "JUnit",
+    ],
+  },
+  {
+    title: "Databases & persistence",
+    skills: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "Elasticsearch",
+      "Cassandra",
+    ],
+  },
+  {
+    title: "Infrastructure & messaging",
+    skills: [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Azure",
+      "Terraform",
+      "RabbitMQ",
+      "Kafka",
+    ],
+  },
+  {
+    title: "API & system design",
+    skills: [
+      "REST",
+      "GraphQL",
+      "gRPC",
+      "WebSockets",
+      "Microservices",
+      "RBAC",
+      "Audit Logging",
+    ],
+  },
+];
 
-const SkillCategory = ({ title, skills }: SkillCategoryProps) => (
-  <div className="glass-card rounded-3xl p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20">
-    <h3 className="mb-4 text-lg font-semibold text-white">{title}</h3>
-    <div className="flex flex-wrap gap-2">
-      {skills.map((skill) => (
-        <span
-          key={skill}
-          className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-mono text-slate-300"
-        >
-          {skill}
-        </span>
-      ))}
-    </div>
-  </div>
-);
+const capabilities = [
+  "API architecture",
+  "Database schema design",
+  "Access control systems",
+  "Event-driven services",
+  "Containerized deployment",
+  "Backend performance planning",
+];
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Languages & Runtimes",
-      skills: ["Go", "JavaScript", "TypeScript", "SQL", "Node.js"],
-    },
-    {
-      title: "Backend Frameworks & Tooling",
-      skills: [
-        "Express",
-        "NestJS",
-        "Fiber",
-        "Echo",
-        "Go Kit",
-        "Hibernate",
-        "JUnit",
-      ],
-    },
-    {
-      title: "Data Management & Persistence",
-      skills: [
-        "PostgreSQL",
-        "MySQL",
-        "MongoDB",
-        "Redis",
-        "Elasticsearch",
-        "Cassandra",
-        "LocalStorage",
-      ],
-    },
-    {
-      title: "Infrastructure, Cloud & Messaging",
-      skills: [
-        "Docker",
-        "Kubernetes",
-        "AWS",
-        "Azure",
-        "Linode",
-        "Terraform",
-        "CI/CD",
-        "RabbitMQ",
-        "Kafka",
-      ],
-    },
-    {
-      title: "API Architecture & System Design",
-      skills: [
-        "REST APIs",
-        "GraphQL",
-        "gRPC",
-        "WebSockets",
-        "Microservices",
-        "RBAC",
-        "Audit Logging",
-      ],
-    },
-  ];
-
-  const strengths = [
-    { name: "Backend Development", level: 95 },
-    { name: "Database & Schema Design", level: 90 },
-    { name: "API Architecture", level: 92 },
-    { name: "Microservices & Messaging", level: 86 },
-    { name: "DevOps & Deployment", level: 80 },
-  ];
-
   return (
     <section id="skills" className="section-shell">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-12 flex items-center gap-4">
-          <span className="font-mono text-xl text-[#c4a76d]">02.</span>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Technical Expertise
-          </h2>
-          <div className="section-heading-line hidden h-px flex-grow md:block" />
+      <div className="container mx-auto max-w-6xl px-4 md:px-6">
+        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="section-kicker">Technical Expertise</p>
+            <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter md:text-7xl">
+              Backend stack
+            </h2>
+          </div>
+          <p className="max-w-xl text-lg leading-8 text-gray-300">
+            A practical backend toolkit for building secure APIs, data-driven
+            products, distributed services, and cloud-ready infrastructure.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {skillCategories.map((category) => (
-            <SkillCategory
-              key={category.title}
-              title={category.title}
-              skills={category.skills}
-            />
-          ))}
-        </div>
-
-        <div className="glass-panel mt-12 rounded-[2rem] p-6 md:p-8">
-          <div className="mb-8 flex flex-col justify-between gap-3 md:flex-row md:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">
-                Backend capability
-              </p>
-              <h3 className="mt-2 text-2xl font-bold text-white">
-                Core engineering strengths
-              </h3>
+        <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="minimal-card shine-surface rounded-[2rem] p-6">
+            <p className="section-kicker">Capabilities</p>
+            <div className="mt-6 grid gap-3">
+              {capabilities.map((capability) => (
+                <div
+                  key={capability}
+                  className="glass-pill group flex items-center justify-between rounded-2xl px-4 py-4 transition duration-300 hover:-translate-y-1 hover:border-[#ccf720]/35 hover:bg-white/[0.08]"
+                >
+                  <span className="font-medium text-white">{capability}</span>
+                  <span className="h-2 w-2 rounded-full bg-[#ccf720] transition group-hover:scale-[1.8]" />
+                </div>
+              ))}
             </div>
-            <p className="max-w-xl text-sm leading-6 text-slate-400">
-              These capabilities reflect my work across API development, secure
-              file platforms, invoice workflow systems, microservices, and
-              database-centered product design.
-            </p>
           </div>
 
-          <div className="space-y-6">
-            {strengths.map((skill) => (
-              <div key={skill.name}>
-                <div className="mb-2 flex justify-between">
-                  <span className="text-sm font-medium text-slate-200">
-                    {skill.name}
-                  </span>
-                  <span className="font-mono text-sm text-[#d7c49e]">
-                    {skill.level}%
-                  </span>
+          <div className="grid gap-4 md:grid-cols-2">
+            {skillCategories.map((category) => (
+              <article
+                key={category.title}
+                className="minimal-card-soft group rounded-[2rem] p-5 transition duration-300 hover:-translate-y-1"
+              >
+                <h3 className="text-lg font-bold text-white transition group-hover:text-[#ccf720]">
+                  {category.title}
+                </h3>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-mono uppercase tracking-wide text-gray-300 transition hover:border-[#ccf720]/35 hover:text-[#ccf720]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-                <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/8">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#9fb8c8] to-[#d7c49e]"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

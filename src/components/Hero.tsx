@@ -1,136 +1,82 @@
-import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
-import {
-  ArrowRight,
-  Code,
-  Database,
-  Server,
-  Sparkles,
-  Terminal,
-} from "lucide-react";
+
+const technologies = [
+  "Go",
+  "TypeScript",
+  "Node.js",
+  "PostgreSQL",
+  "Docker",
+  "Kubernetes",
+  "gRPC",
+  "Kafka",
+  "Redis",
+  "AWS",
+];
 
 const Hero = () => {
-  const [languageIndex, setLanguageIndex] = useState(0);
-  const [specialtyIndex, setSpecialtyIndex] = useState(0);
-  const [languageFade, setLanguageFade] = useState(true);
-  const [specialtyFade, setSpecialtyFade] = useState(true);
-
-  const languageSets = [
-    ["TypeScript", "Node.js", "Golang"],
-    ["PostgreSQL", "MongoDB", "Redis"],
-    ["Docker", "Kubernetes", "AWS"],
-    ["gRPC", "GraphQL", "REST"],
-  ];
-
-  const specialties = [
-    "secure backend platforms",
-    "distributed service architectures",
-    "business workflow systems",
-    "scalable data models",
-    "production-ready APIs",
-  ];
-
-  useEffect(() => {
-    const langTimer = setInterval(() => {
-      setLanguageFade(false);
-      setTimeout(() => {
-        setLanguageIndex((i) => (i + 1) % languageSets.length);
-        setLanguageFade(true);
-      }, 300);
-    }, 3000);
-
-    const specTimer = setInterval(() => {
-      setSpecialtyFade(false);
-      setTimeout(() => {
-        setSpecialtyIndex((i) => (i + 1) % specialties.length);
-        setSpecialtyFade(true);
-      }, 300);
-    }, 4000);
-
-    return () => {
-      clearInterval(langTimer);
-      clearInterval(specTimer);
-    };
-  }, []);
-
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-4 pt-28 md:px-6">
-      <div className="absolute left-[8%] top-28 h-32 w-32 rounded-full bg-slate-300/10 blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-[12%] h-40 w-40 rounded-full bg-[#c4a76d]/10 blur-3xl animate-float" />
-
-      <div className="container mx-auto">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+    <section className="relative flex min-h-screen items-center overflow-hidden px-4 pb-10 pt-28 md:px-6">
+      <div className="pointer-events-none absolute right-[8%] top-28 h-44 w-44 rounded-full border border-[#ccf720]/20 orbit-ring" />
+      <div className="pointer-events-none absolute right-[12%] top-36 h-20 w-20 rounded-full bg-[#ccf720]/10 blur-2xl" />
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid min-h-[calc(100vh-9rem)] items-center gap-12 lg:grid-cols-[1fr_380px]">
           <div className="animate-fade-in">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-medium text-slate-200 shadow-lg shadow-black/10 backdrop-blur-xl">
-              <Sparkles className="h-4 w-4 text-[#c4a76d]" /> Backend Engineer •
-              API & Systems Development
+            <div className="mb-8 flex flex-wrap items-center gap-3">
+              <span className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-gray-200">
+                <span className="h-2 w-2 rounded-full bg-[#ccf720] animate-pulse-dot" />
+                Available for backend engineering roles
+              </span>
+              <a
+                href="#projects"
+                className="glass-pill magnetic-link rounded-full px-4 py-2 text-sm text-gray-300 transition hover:border-[#ccf720]/40 hover:text-white"
+              >
+                Explore selected work
+              </a>
             </div>
 
-            <p className="mb-5 font-mono text-[#d7c49e]">
-              <span className="inline-flex items-center gap-2">
-                <Terminal className="h-5 w-5" /> Hello, I'm
-              </span>
-            </p>
+            <p className="section-kicker mb-5">Backend Software Developer</p>
 
-            <h1 className="max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl lg:text-8xl">
-              Moses Efa Eteng
+            <h1 className="max-w-5xl text-6xl font-black uppercase leading-[0.88] tracking-tighter text-white transition duration-500 hover:tracking-[-0.08em] md:text-8xl lg:text-9xl">
+              Moses
+              <span className="block outline-text">Efa Eteng</span>
             </h1>
 
-            <div className="mt-5 min-h-20 text-3xl font-bold leading-tight text-slate-300 md:text-5xl">
-              <span
-                className={cn(
-                  "block transition-all duration-500",
-                  specialtyFade
-                    ? "translate-y-0 opacity-100"
-                    : "-translate-y-3 opacity-0",
-                )}
-              >
-                Engineering{" "}
-                <span className="text-gradient">
-                  {specialties[specialtyIndex]}
-                </span>
-              </span>
-            </div>
-
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-              Backend-focused software developer specializing in reliable APIs,
-              service-oriented architecture, secure access control, and
-              data-driven application design for practical business use cases.
+            <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-300 md:text-xl">
+              I design and build backend systems for product teams that need
+              reliable APIs, secure access control, scalable data models, and
+              service architectures that can evolve with real business needs.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-4">
               <Button
                 asChild
-                className="h-12 rounded-full bg-[#d7c49e] px-6 font-semibold text-slate-950 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:bg-[#eadfc8]"
+                className="h-12 rounded-full bg-[#ccf720] px-6 font-bold text-[#111111] shadow-none transition hover:-translate-y-1 hover:scale-105 hover:bg-white"
               >
-                <a href="#contact">
-                  Get in Touch <ArrowRight className="h-4 w-4" />
+                <a href="#projects">
+                  View Selected Work <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
               <Button
                 variant="outline"
                 asChild
-                className="h-12 rounded-full border-white/15 bg-white/8 px-6 text-white backdrop-blur-xl transition hover:-translate-y-1 hover:bg-white/12"
+                className="h-12 rounded-full border-white/15 bg-transparent px-6 text-white transition hover:-translate-y-1 hover:scale-105 hover:border-[#ccf720]/45 hover:bg-white/8"
               >
-                <a href="#projects">View My Work</a>
+                <a href="#contact">Contact Me</a>
               </Button>
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+            <div className="mt-12 grid max-w-2xl grid-cols-3 border-y border-white/10 py-6">
               {[
                 { value: "3+", label: "Years Experience" },
-                { value: "4", label: "Project Domains" },
-                { value: "API", label: "Driven Design" },
+                { value: "API", label: "Backend Focus" },
+                { value: "Cloud", label: "Ready Systems" },
               ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass-card rounded-2xl p-4 text-center"
-                >
-                  <div className="text-2xl font-bold text-white">
+                <div key={stat.label} className="pr-5">
+                  <div className="text-3xl font-black text-white">
                     {stat.value}
                   </div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">
+                  <div className="mt-1 text-xs uppercase tracking-[0.18em] text-gray-500">
                     {stat.label}
                   </div>
                 </div>
@@ -138,77 +84,68 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-r from-slate-300/10 via-blue-900/10 to-[#c4a76d]/10 blur-3xl" />
-            <div
-              className={cn(
-                "glass-panel relative overflow-hidden rounded-[2rem] p-5 font-mono transition-all duration-300 md:p-7",
-                languageFade
-                  ? "scale-100 opacity-100"
-                  : "scale-[0.98] opacity-90",
-              )}
-            >
-              <div className="mb-5 flex items-center gap-2 text-sm">
-                <div className="h-3 w-3 rounded-full bg-red-400/80" />
-                <div className="h-3 w-3 rounded-full bg-[#d7c49e]" />
-                <div className="h-3 w-3 rounded-full bg-emerald-400/80" />
-                <div className="ml-3 text-slate-400">
-                  engineering-profile.ts
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-slate-950/50 p-5 text-sm leading-7 text-slate-200">
-                <span className="text-emerald-300">const</span>{" "}
-                <span className="text-[#9fb8c8]">focus</span> = {"{"}
-                <br />
-                &nbsp;&nbsp;
-                <span className="text-[#d7c49e]">specialization:</span> "
-                <span className="text-slate-100">
-                  {specialties[specialtyIndex]}
-                </span>
-                ",
-                <br />
-                &nbsp;&nbsp;<span className="text-[#d7c49e]">stack:</span> [
-                {languageSets[languageIndex].map((lang, index) => (
-                  <span key={lang}>
-                    <span className="text-slate-100">"{lang}"</span>
-                    {index < languageSets[languageIndex].length - 1 && ", "}
-                  </span>
-                ))}
-                ],
-                <br />
-                &nbsp;&nbsp;<span className="text-[#d7c49e]">
-                  principles:
-                </span>{" "}
-                ["secure", "scalable", "maintainable"],
-                <br />
-                &nbsp;&nbsp;<span className="text-[#d7c49e]">location:</span> "
-                <span className="text-slate-100">Lagos, Nigeria</span>",
-                <br />
-                &nbsp;&nbsp;<span className="text-[#d7c49e]">
-                  available:
-                </span>{" "}
-                <span className="text-emerald-300">true</span>
-                <br />
-                {"};"}
-              </div>
-
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {[
-                  { icon: Server, label: "Services" },
-                  { icon: Database, label: "Data Models" },
-                  { icon: Code, label: "API Design" },
-                ].map(({ icon: Icon, label }) => (
-                  <div
-                    key={label}
-                    className="rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-center text-slate-300"
-                  >
-                    <Icon className="mx-auto mb-2 h-5 w-5 text-[#d7c49e]" />
-                    <span className="text-xs">{label}</span>
-                  </div>
-                ))}
+          <aside className="minimal-card shine-surface group rounded-[2rem] p-5 transition duration-500 hover:-translate-y-2 hover:rotate-1 lg:sticky lg:top-28">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5">
+              <img
+                src="/image.jpeg"
+                alt="Moses Efa Eteng"
+                className="h-[420px] w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-5">
+                <p className="text-sm font-semibold text-[#ccf720]">
+                  Backend Engineering
+                </p>
+                <p className="mt-1 text-sm text-gray-300">
+                  APIs • Databases • Microservices
+                </p>
               </div>
             </div>
+
+            <div className="mt-5 grid grid-cols-3 gap-3">
+              {[
+                {
+                  href: "https://github.com/mosescode1",
+                  icon: Github,
+                  label: "GitHub",
+                },
+                {
+                  href: "https://www.linkedin.com/in/eteng-moses-001954176",
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                },
+                {
+                  href: "mailto:emosescode@gmail.com",
+                  icon: Mail,
+                  label: "Email",
+                },
+              ].map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  className="glass-pill flex flex-col items-center justify-center rounded-2xl py-4 text-xs text-gray-300 transition duration-300 hover:-translate-y-1 hover:scale-105 hover:border-[#ccf720]/40 hover:bg-[#ccf720]/10 hover:text-[#ccf720]"
+                >
+                  <Icon className="mb-2 h-5 w-5" />
+                  {label}
+                </a>
+              ))}
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-8 overflow-hidden border-y border-white/10 py-5 [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+          <div className="flex w-max gap-8 animate-slide-track">
+            {[...technologies, ...technologies].map((tech, index) => (
+              <span
+                key={`${tech}-${index}`}
+                className="text-sm font-bold uppercase tracking-[0.25em] text-gray-500"
+              >
+                {tech} <span className="ml-8 text-[#ccf720]">•</span>
+              </span>
+            ))}
           </div>
         </div>
       </div>
