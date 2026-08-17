@@ -51,7 +51,7 @@ const Navbar = () => {
             ))}
             <li className="md:ml-2">
               <a
-                href="https://drive.google.com/file/d/13YJdyKivXTL8nTIS9HVX1_x6bvemdYZm/view?usp=sharing"
+                href="https://docs.google.com/document/d/10kGHa8ZWaRtJNoCi7mOWmq7-zwnFaGbrzjCoKpjYqHw/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-full bg-[#ccf720] px-5 py-2 text-center text-sm font-bold text-[#111111] shadow-lg shadow-[#ccf720]/15 transition hover:-translate-y-0.5 hover:scale-105 hover:bg-white"

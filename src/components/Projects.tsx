@@ -5,18 +5,19 @@ interface Project {
   description: string;
   technologies: string[];
   demoUrl?: string;
-  image: string;
+  image?: string;
   status: string;
+  previewUrl?: string;
 }
 
 const projects: Project[] = [
   {
-    title: "Business Invoice Management Platform",
+    title: "Go Microservices Architecture",
     description:
-      "Business operations application for organization-level account management, invoice creation, status tracking, scoped data ownership, local persistence, and authenticated access flows.",
-    technologies: ["React", "TypeScript", "Context API", "Auth Flow"],
-    image: "/image1.jpeg",
-    status: "In development",
+      "Distributed backend architecture built with Go, gRPC inter-service communication, Kafka event streaming, containerized services, and Kubernetes deployment readiness.",
+    technologies: ["Go", "gRPC", "Kafka", "Docker", "Kubernetes"],
+    image: "/project.png",
+    status: "System architecture",
   },
   {
     title: "Secure File Management API",
@@ -28,21 +29,27 @@ const projects: Project[] = [
     status: "API reference",
   },
   {
-    title: "Go Microservices Architecture",
+    title: "Sellawise",
     description:
-      "Distributed backend architecture built with Go, gRPC inter-service communication, Kafka event streaming, containerized services, and Kubernetes deployment readiness.",
-    technologies: ["Go", "Kubernetes", "gRPC", "Kafka", "AWS"],
-    image: "/project.png",
-    status: "System architecture",
+      "A live commerce-focused web platform built around product discovery, digital storefront experiences, and scalable business workflows for online sellers.",
+    technologies: [
+      "Web Platform",
+      "Commerce",
+      "Product Workflows",
+      "Live Project",
+    ],
+    demoUrl: "https://sellawise.com",
+    previewUrl: "https://sellawise.com",
+    status: "Live platform",
   },
   {
-    title: "Marketplace Database Schema Design",
+    title: "Sojourn",
     description:
-      "Normalized relational database model for an Airbnb-style marketplace covering users, listings, bookings, reviews, and transactional product relationships.",
-    technologies: ["DrawSQL", "PostgreSQL", "RDBMS"],
-    demoUrl: "https://drawsql.app/teams/alx-connect/diagrams/airbnb",
-    image: "/database.png",
-    status: "Database design",
+      "A live digital platform focused on travel and hospitality experiences, presenting user-facing product flows with a clean, accessible web interface.",
+    technologies: ["Web Platform", "Travel", "User Experience", "Live Project"],
+    demoUrl: "https://sojourn.ng",
+    previewUrl: "https://sojourn.ng",
+    status: "Live platform",
   },
 ];
 
@@ -58,9 +65,9 @@ const Projects = () => {
             </h2>
           </div>
           <p className="max-w-xl text-lg leading-8 text-gray-300">
-            Practical backend and data-focused projects that reflect my current
-            engineering direction: secure systems, workflow products,
-            distributed services, and database design.
+            Selected backend and product-focused projects that reflect my work
+            across secure systems, workflow products, live platforms, and
+            business-facing web applications.
           </p>
         </div>
 
@@ -71,13 +78,31 @@ const Projects = () => {
               className="minimal-card shine-surface group overflow-hidden rounded-[2rem] transition duration-500 hover:-translate-y-3 hover:rotate-[0.35deg] hover:border-[#ccf720]/45"
             >
               <div className="relative h-64 overflow-hidden bg-black">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover opacity-70 grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-95 group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
-                <div className="absolute left-5 top-5 flex items-center gap-3">
+                {project.previewUrl ? (
+                  <>
+                    <iframe
+                      src={project.previewUrl}
+                      title={`${project.title} live preview`}
+                      loading="lazy"
+                      className="h-[520px] w-[200%] origin-top-left scale-50 border-0 opacity-80 transition duration-500 group-hover:scale-[0.53] group-hover:opacity-100"
+                    />
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.title}`}
+                      className="absolute inset-0 z-10"
+                    />
+                  </>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover opacity-70 grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-95 group-hover:grayscale-0"
+                  />
+                )}
+                <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+                <div className="pointer-events-none absolute left-5 top-5 z-30 flex items-center gap-3">
                   <span className="rounded-full bg-[#ccf720] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#111111]">
                     {project.status}
                   </span>
@@ -113,7 +138,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="mt-6 inline-flex items-center gap-2 font-bold text-[#ccf720] transition hover:gap-3"
                   >
-                    View reference <ExternalLink className="h-4 w-4" />
+                    View project <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
               </div>
