@@ -1,202 +1,113 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+
+const links = [
+  { href: "mailto:emosescode@gmail.com", label: "emosescode@gmail.com", kind: "email" },
+  { href: "https://github.com/mosescode1", label: "github.com/mosescode1", kind: "github" },
+  {
+    href: "https://www.linkedin.com/in/eteng-moses-001954176",
+    label: "in/eteng-moses",
+    kind: "linkedin",
+  },
+];
+
+const field =
+  "h-12 rounded border border-night-field bg-night px-3.5 text-base text-paper placeholder:text-night-sub focus:border-accent-dark focus:outline-none";
+const labelCls = "font-mono text-xs text-night-body md:text-[13px]";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Same behavior as before: simulated send. Wire to a real endpoint (e.g. Formspree/Resend) when ready.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      toast({
-        title: `Something went wrong ${error}`,
-        description: "Your message couldn't be sent. Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    setStatus("sending");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setStatus("sent");
   };
 
-  const inputClass =
-    "h-12 rounded-2xl border-white/12 bg-white/[0.065] text-white placeholder:text-gray-500 shadow-inner shadow-white/5 backdrop-blur-xl focus-visible:border-[#ccf720]/60 focus-visible:ring-[#ccf720]/20";
-
   return (
-    <section id="contact" className="section-shell">
-      <div className="container mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-14 grid gap-6 md:grid-cols-[0.7fr_1fr] md:items-end">
-          <div>
-            <p className="section-kicker">Contact</p>
-            <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter md:text-7xl">
-              Let’s talk
-            </h2>
-          </div>
-          <p className="max-w-2xl text-lg leading-8 text-gray-300">
-            I’m available for backend engineering opportunities, collaborations,
-            and product-focused work involving APIs, microservices, secure file
+    <section
+      id="contact"
+      className="mx-3 mt-20 scroll-mt-24 rounded-lg bg-night text-paper lg:mx-12 lg:mt-[140px]"
+    >
+      <div className="mx-auto grid max-w-[1344px] gap-8 px-5 py-12 lg:grid-cols-[minmax(0,1fr)_600px] lg:gap-24 lg:px-12 lg:py-24">
+        <div className="flex flex-col gap-6 lg:gap-7">
+          <p className="kicker text-accent-dark">§ 4 — Contact</p>
+          <h2 className="section-title text-[56px] leading-[0.95] tracking-[-0.03em] lg:text-[96px]">
+            Let’s <span className="italic">talk.</span>
+          </h2>
+          <p className="m-0 max-w-[520px] text-base leading-relaxed text-night-body lg:text-lg">
+            Available for backend engineering opportunities, collaborations, and
+            product-focused work involving APIs, microservices, secure file
             systems, workflow automation, and data-intensive applications.
           </p>
+          <div className="flex flex-col border-t border-night-rule lg:mt-3">
+            {links.map((l) => (
+              <a
+                key={l.kind}
+                href={l.href}
+                target={l.href.startsWith("http") ? "_blank" : undefined}
+                rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex min-h-14 items-center justify-between border-b border-night-rule text-base text-paper no-underline hover:text-accent-dark lg:py-5 lg:text-lg"
+              >
+                <span>{l.label}</span>
+                <span className="font-mono text-xs text-night-sub md:text-[13px]">{l.kind}</span>
+              </a>
+            ))}
+          </div>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="minimal-card shine-surface rounded-[2rem] p-6">
-            <h3 className="text-2xl font-black uppercase tracking-tight text-white">
-              Professional contact
-            </h3>
-            <p className="mt-4 leading-7 text-gray-400">
-              If you need support with API design, backend architecture, data
-              modeling, access control, or service integration, send a message
-              and I’ll follow up promptly.
-            </p>
-
-            <div className="mt-8 space-y-3">
-              {[
-                {
-                  href: "mailto:emosescode@gmail.com",
-                  icon: Mail,
-                  label: "emosescode@gmail.com",
-                },
-                {
-                  href: "https://github.com/mosescode1",
-                  icon: Github,
-                  label: "github.com/mosescode1",
-                },
-                {
-                  href: "https://www.linkedin.com/in/eteng-moses-001954176",
-                  icon: Linkedin,
-                  label: "LinkedIn profile",
-                },
-              ].map(({ href, icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    href.startsWith("http") ? "noopener noreferrer" : undefined
-                  }
-                  className="glass-pill flex items-center gap-3 rounded-2xl p-4 text-sm text-gray-300 transition hover:-translate-y-1 hover:border-[#ccf720]/40 hover:text-[#ccf720]"
-                >
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-[#ccf720] text-[#111111]">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  {label}
-                </a>
-              ))}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-[18px] rounded-md border border-night-rule bg-night-2 px-[18px] py-[22px] lg:gap-[22px] lg:p-10"
+        >
+          <div className="grid gap-[18px] sm:grid-cols-2 sm:gap-5">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className={labelCls}>Name</label>
+              <input id="name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required className={field} />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className={labelCls}>Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" value={formData.email} onChange={handleChange} required className={field} />
             </div>
           </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="minimal-card-soft shine-surface rounded-[2rem] p-6 md:p-8"
-          >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-gray-300">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className={inputClass}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-gray-300">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your.email@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className={inputClass}
-                />
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-2">
-              <Label htmlFor="subject" className="text-gray-300">
-                Subject
-              </Label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder="Project, role, or collaboration topic"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className={inputClass}
-              />
-            </div>
-
-            <div className="mt-6 space-y-2">
-              <Label htmlFor="message" className="text-gray-300">
-                Message
-              </Label>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder="Share a brief overview of your requirements..."
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="rounded-2xl border-white/12 bg-white/[0.065] text-white placeholder:text-gray-500 shadow-inner shadow-white/5 backdrop-blur-xl focus-visible:border-[#ccf720]/60 focus-visible:ring-[#ccf720]/20"
-              />
-            </div>
-
-            <Button
+          <div className="flex flex-col gap-2">
+            <label htmlFor="subject" className={labelCls}>Subject</label>
+            <input id="subject" name="subject" placeholder="Project, role, or collaboration topic" value={formData.subject} onChange={handleChange} required className={field} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="message" className={labelCls}>Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              placeholder="Share a brief overview of your requirements…"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              className={`${field} h-auto resize-y py-3.5`}
+            />
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <button
               type="submit"
-              disabled={isSubmitting}
-              className={cn(
-                "mt-8 h-12 w-full rounded-full bg-[#ccf720] font-bold text-[#111111] shadow-lg shadow-[#ccf720]/15 transition hover:-translate-y-1 hover:scale-105 hover:bg-white sm:w-auto",
-                isSubmitting &&
-                  "cursor-not-allowed opacity-70 hover:translate-y-0 hover:scale-100",
-              )}
+              disabled={status === "sending"}
+              className="h-[52px] cursor-pointer rounded-full border-0 bg-accent-dark px-7 text-base font-semibold text-night transition hover:bg-paper disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}{" "}
-              {!isSubmitting && <Send className="h-4 w-4" />}
-            </Button>
-          </form>
-        </div>
+              {status === "sending" ? "Sending…" : "Send message →"}
+            </button>
+            <p role="status" className="m-0 font-mono text-[13px] text-code">
+              {status === "sent" ? "Thanks — I’ll get back to you soon." : ""}
+            </p>
+          </div>
+        </form>
       </div>
     </section>
   );
