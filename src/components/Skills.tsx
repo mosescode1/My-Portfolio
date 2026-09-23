@@ -1,54 +1,20 @@
 const skillCategories = [
-  {
-    title: "Languages & runtimes",
-    skills: ["Go", "TypeScript", "JavaScript", "SQL", "Node.js"],
-  },
+  { title: "Languages & runtimes", skills: ["Go", "TypeScript", "JavaScript", "SQL", "Node.js"] },
   {
     title: "Backend frameworks",
-    skills: [
-      "Express",
-      "NestJS",
-      "Fiber",
-      "Echo",
-      "Go Kit",
-      "Hibernate",
-      "JUnit",
-    ],
+    skills: ["Express", "NestJS", "Fiber", "Echo", "Go Kit", "Hibernate", "JUnit"],
   },
   {
     title: "Databases & persistence",
-    skills: [
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Redis",
-      "Elasticsearch",
-      "Cassandra",
-    ],
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch", "Cassandra"],
   },
   {
     title: "Infrastructure & messaging",
-    skills: [
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "Azure",
-      "Terraform",
-      "RabbitMQ",
-      "Kafka",
-    ],
+    skills: ["Docker", "Kubernetes", "AWS", "Azure", "Terraform", "RabbitMQ", "Kafka"],
   },
   {
     title: "API & system design",
-    skills: [
-      "REST",
-      "GraphQL",
-      "gRPC",
-      "WebSockets",
-      "Microservices",
-      "RBAC",
-      "Audit Logging",
-    ],
+    skills: ["REST", "GraphQL", "gRPC", "WebSockets", "Microservices", "RBAC", "Audit Logging"],
   },
 ];
 
@@ -63,63 +29,68 @@ const capabilities = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="section-shell">
-      <div className="container mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <p className="section-kicker">Technical Expertise</p>
-            <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter md:text-7xl">
-              Backend stack
-            </h2>
-          </div>
-          <p className="max-w-xl text-lg leading-8 text-gray-300">
-            A practical backend toolkit for building secure APIs, data-driven
-            products, distributed services, and cloud-ready infrastructure.
-          </p>
-        </div>
+    <section
+      id="stack"
+      className="mx-auto grid max-w-[1440px] scroll-mt-24 gap-5 px-5 pt-20 md:px-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-20 lg:px-24 lg:pt-[140px]"
+    >
+      <div className="flex flex-col gap-4">
+        <p className="kicker">§ 2 — Stack</p>
+        <h2 className="section-title text-[44px] lg:text-[64px]">Backend toolkit</h2>
+        <p className="m-0 text-base leading-relaxed text-sub lg:mt-3 lg:text-[17px]">
+          A practical toolkit for building secure APIs, data-driven products,
+          distributed services, and cloud-ready infrastructure.
+        </p>
 
-        <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="minimal-card shine-surface rounded-[2rem] p-6">
-            <p className="section-kicker">Capabilities</p>
-            <div className="mt-6 grid gap-3">
-              {capabilities.map((capability) => (
-                <div
-                  key={capability}
-                  className="glass-pill group flex items-center justify-between rounded-2xl px-4 py-4 transition duration-300 hover:-translate-y-1 hover:border-[#ccf720]/35 hover:bg-white/[0.08]"
-                >
-                  <span className="font-medium text-white">{capability}</span>
-                  <span className="h-2 w-2 rounded-full bg-[#ccf720] transition group-hover:scale-[1.8]" />
-                </div>
-              ))}
+        <div className="order-last mt-7 hidden flex-col lg:flex">
+          <CapabilityList />
+        </div>
+      </div>
+
+      <div className="flex flex-col border-t border-ink">
+        {skillCategories.map((category, i) => (
+          <div
+            key={category.title}
+            className="grid gap-3 border-b border-rule py-5 md:grid-cols-[260px_minmax(0,1fr)] md:items-baseline md:gap-8 md:py-[26px]"
+          >
+            <div className="flex items-baseline gap-3.5">
+              <span className="font-mono text-xs text-accent md:text-[13px]">0{i + 1}</span>
+              <h3 className="m-0 text-[17px] font-semibold md:text-lg">{category.title}</h3>
             </div>
+            <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0 md:gap-2">
+              {category.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="rounded-full border border-chip bg-surface px-2.5 py-1 font-mono text-[13px] md:px-3 md:py-1.5 md:text-sm"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
+        ))}
+      </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {skillCategories.map((category) => (
-              <article
-                key={category.title}
-                className="minimal-card-soft group rounded-[2rem] p-5 transition duration-300 hover:-translate-y-1"
-              >
-                <h3 className="text-lg font-bold text-white transition group-hover:text-[#ccf720]">
-                  {category.title}
-                </h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-mono uppercase tracking-wide text-gray-300 transition hover:border-[#ccf720]/35 hover:text-[#ccf720]"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+      <div className="mt-2 flex flex-col lg:hidden">
+        <CapabilityList />
       </div>
     </section>
   );
 };
+
+const CapabilityList = () => (
+  <>
+    <p className="mb-3.5 mt-0 font-mono text-xs text-sub md:text-[13px]">Capabilities</p>
+    <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+      {capabilities.map((c, i) => (
+        <li
+          key={c}
+          className={`text-[15px] md:text-base ${i < capabilities.length - 1 ? "border-b border-rule pb-2.5" : ""}`}
+        >
+          {c}
+        </li>
+      ))}
+    </ul>
+  </>
+);
 
 export default Skills;
